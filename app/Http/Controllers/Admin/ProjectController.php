@@ -35,11 +35,6 @@ class ProjectController extends Controller
     ];
 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $projects = Project::Paginate(20);
@@ -47,11 +42,6 @@ class ProjectController extends Controller
         return view('admin.projects.index', compact('projects'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $types = Type::All();
@@ -59,12 +49,6 @@ class ProjectController extends Controller
         return view('admin.projects.create', compact('types', 'technologies'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //validare i dati
@@ -104,24 +88,12 @@ class ProjectController extends Controller
         return redirect()->route('admin.projects.index', ['project' => $newProject]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
     public function show($slug)
     {
         $project = Project::where('slug', $slug)->firstOrFail();
         return view('admin.projects.show', compact('project'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
     public function edit($slug)
     {
 
@@ -132,13 +104,6 @@ class ProjectController extends Controller
         return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $slug)
     {
         $project = Project::where('slug', $slug)->firstOrFail();
@@ -181,12 +146,6 @@ class ProjectController extends Controller
         return to_route('admin.projects.show', ['project' => $project]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($slug)
     {
         $project = Project::where('slug', $slug)->firstOrFail();
@@ -210,8 +169,6 @@ class ProjectController extends Controller
 
         return to_route('admin.projects.index')->with('restore_success', $project);
     }
-
-
 
     public function trashed()
     {
@@ -237,13 +194,4 @@ class ProjectController extends Controller
         return to_route('admin.projects.trashed')->with('delete_success', $project);
     }
 
-    // public function harddelete($slug)
-    // {
-    //     $project = Project::withTrashed()->find($slug);
-
-    //     // se ho il trashed lo inserisco nel harddelete
-    //     $project->technologies()->detach();
-    //     $project->forceDelete();
-    //     return to_route('admin.project.trashed')->with('delete_success', $project);
-    // }
 }

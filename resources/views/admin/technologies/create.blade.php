@@ -3,7 +3,7 @@
 
         <section class="m-5 p-4 dark:bg-gray-800 dark:text-gray-50">
             <div class="p-5">
-                <h1>Create a New Technologies</h1>
+                <h1 class="text-2xl font-bold">Create a New Technologies</h1>
 
                 <form 
                 method="POST" 

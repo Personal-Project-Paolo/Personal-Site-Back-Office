@@ -65,7 +65,7 @@
             </table>
         </div>
             <div class="py-2 px-2 dark:text-gray-100">
-                <h5>Latest Project in this Type</h5>
+                <h5 class="text-2xl decoration-gray-700 font-bold my-3">Latest Project in this Type</h5>
                 <td>
                     @foreach ($type->projects as $project)
                         <li><a href="{{ route('admin.projects.show', ['project' => $project]) }}">{{ $project->title }}</a></li>

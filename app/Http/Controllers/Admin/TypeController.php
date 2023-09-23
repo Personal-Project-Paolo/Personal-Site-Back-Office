@@ -112,8 +112,13 @@ class TypeController extends Controller
     public function harddelete($id)
     {
         $type = Type::withTrashed()->find($id);
-        $type->forceDelete();
 
-        return to_route('admin.types.trashed')->with('delete_success', $type);
+        if ($type) {
+            $type->forceDelete();
+            return redirect()->route('admin.types.trashed')->with('delete_success', $type);
+        } else {
+            // Gestisci il caso in cui l'elemento non sia stato trovato
+            return redirect()->route('admin.types.trashed')->with('delete_error', 'Elemento non trovato');
+        }
     }
 }

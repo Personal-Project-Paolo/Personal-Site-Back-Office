@@ -31,23 +31,23 @@ Route::middleware('auth', 'verified')
     ->prefix('admin')
     ->group(function () {
 
-        Route::get('/projects/trashed', [ProjectController::class, 'trashed'])->name('projects.trashed');
-        Route::post('/projects/{project}/restore', [ProjectController::class, 'restore'])->name('projects.restore');
-        Route::delete('/projects/{project}/harddelete', [ProjectController::class, 'harddelete'])->name('projects.harddelete');
+    Route::get('/projects/trashed', [ProjectController::class, 'trashed'])->name('projects.trashed');
+    Route::post('/projects/{project}/restore', [ProjectController::class, 'restore'])->name('projects.restore');
+    Route::delete('/projects/{project}/harddelete', [ProjectController::class, 'harddelete'])->name('projects.harddelete');
 
-        Route::resource('projects', ProjectController::class);
+    Route::resource('projects', ProjectController::class);
 
-        // Route::resource('personal', PersonalController::class);
+    // Route::resource('personal', PersonalController::class);
 
-        // Type route
-        Route::get('types/trashed', [TypeController::class, 'trashed'])->name('types.trashed');
-        Route::post('types/{type}/restore', [TypeController::class, 'restore'])->name('types.restore');
-        Route::delete('types/{type}/harddelete', [TypeController::class, 'harddelete'])->name('types.harddelete');
+    // Type route
+    Route::get('types/trashed', [TypeController::class, 'trashed'])->name('types.trashed');
+    Route::post('types/{type}/restore', [TypeController::class, 'restore'])->name('types.restore');
+    Route::delete('types/{type}/harddelete', [TypeController::class, 'harddelete'])->name('types.harddelete');
 
-        Route::resource('types', TypeController::class);
+    Route::resource('types', TypeController::class);
 
-        Route::resource('technologies', TechnologyController::class);
-    });
+    Route::resource('technologies', TechnologyController::class);
+});
 
 Route::middleware('auth')
     ->name('admin.')
@@ -56,6 +56,7 @@ Route::middleware('auth')
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    });
+});
 
-require __DIR__ . '/auth.php';
+
+require __DIR__.'/auth.php';

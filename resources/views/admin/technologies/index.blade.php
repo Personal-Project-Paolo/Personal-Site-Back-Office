@@ -11,8 +11,10 @@
 
         <div class="dark:text-gray-100">
 
-            <button type="button" class="my-4 px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100">
-                <a href="{{ route("admin.technologies.create") }}" >Create a new Technology</a>
+            <h2 class="mt-4 mb-4 text-2xl font-semibold leadi text-gray-100">Technologies</h2>
+
+            <button type="button" class="my-4 px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:bg-blue-500 hover:text-white">
+                <a href="{{ route("admin.technologies.create") }}">Create a new Technology</a>
             </button>
             
 
@@ -31,9 +33,8 @@
                             <th scope="row">{{ $technology->id }}</th>
                             
                             <td class="flex py-1 w-100 justify-end px-4">
-                                <a class="ml-1 px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}">View</a>
-                                <a class="ml-1 px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100" href="{{ route('admin.technologies.edit', ['technology' => $technology->id]) }}">Edit</a>
-                                <form
+                            <a class="ml-1 px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:bg-blue-700 dark:hover:bg-blue-700" href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}">View</a>
+                            <a class="ml-1 px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:bg-blue-700 dark:hover:bg-blue-700" href="{{ route('admin.technologies.edit', ['technology' => $technology->id]) }}">Edit</a>                                <!-- <form
                                         action="{{ route('admin.technologies.destroy', ['technology' => $technology->id]) }}"
                                         method="post"
                                         class="d-inline-block mx-1"
@@ -43,7 +44,7 @@
                                         <button class="px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100">
                                             Delete
                                         </button>
-                                </form>
+                                </form> -->
                             </td>
                         </tr>
                     @endforeach

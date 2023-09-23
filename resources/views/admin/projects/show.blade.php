@@ -27,7 +27,6 @@
                             <th class="p-2">Creation Date</th>
                             <th class="p-2">Last Update</th>
                             <th class="p-2">Collaborators</th>
-                            <th class="p-2">Image</th>
                             <th class="p-2">Description</th>
                             <th class="p-2">Type</th>
                             <th class="p-2">Technology</th>
@@ -64,9 +63,6 @@
                                 <p>{{ $project->collaborators }}</p>
                             </td>
                             <td class="px-2 py-2">
-                                <p><a href="/storage/{{$project->image}}">Preview</a></p>
-                            </td>
-                            <td class="px-2 py-2">
                                 <p>{{ $project->description }}</p>
                             </td>
                             <td class="px-2 py-2">
@@ -90,7 +86,7 @@
                                 <p><a class="text-decoration-none" href="{{ $project->link_github }}">Link</a></p>
                             </td>
                             <td class="flex px-3 py-2">
-                                <button class="ml-1 px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100">
+                                <button class="ml-1 px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:bg-yellow-500 hover:text-white">
                                     <a class="button mx-1" href="{{ route('admin.projects.edit', ['project' => $project]) }}">Edit</a>
                                 </button>
 
@@ -101,7 +97,7 @@
                                 >
                                     @csrf
                                     @method('delete')
-                                    <button class="px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100">
+                                    <button class="px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:bg-red-500 hover:text-white">
                                         Delete
                                     </button>
                                 </form>

@@ -3,7 +3,7 @@
 
         <section class="m-5 p-6 dark:bg-gray-800 dark:text-gray-50">
             <div class="p-5">
-                <h1>Create a new Project</h1>
+                <h1 class="text-2xl font-bold">Create a new Project</h1>
                 <form 
                 method="POST" 
                 action="{{ route('admin.projects.store') }}" 

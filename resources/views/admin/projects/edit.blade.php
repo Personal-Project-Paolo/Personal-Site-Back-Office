@@ -229,7 +229,7 @@
                     </fieldset>   
                    
                     <div class="flex justify-center p-6 rounded-md shadow-sm dark:bg-gray-900">
-                        <button class="px-20 py-3 font-semibold rounded dark:bg-gray-100 dark:text-gray-800 col-span-full sm:col-span-1 btn">Save</button> 
+                        <button class="px-20 py-3 font-semibold rounded dark:bg-gray-100 dark:text-gray-800 col-span-full sm:col-span-1 btn hover:scale-110 duration-200">Save</button> 
                     </div>
                     
         

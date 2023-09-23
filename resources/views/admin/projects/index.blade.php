@@ -40,8 +40,13 @@
         <div class="dark:text-gray-100">
             <h2 class="mt-4 mb-4 text-2xl font-semibold leadi">My Projects</h2>
 
-            <button type="button" class="mb-4 px-8 py-3 font-semibold border rounded dark:border-gray-100 dark:text-gray-100">
+            
+        
+            <button type="button" class="mr-1 mb-4 px-8 py-2 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:bg-blue-700 hover:text-white hover:scale-105 duration-200">
                 <a href="{{ route("admin.projects.create") }}">Create a new Project</a>
+            </button>
+            <button class="mb-4 px-8 py-2 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:bg-red-700 hover:text-white hover:scale-110 duration-200">
+                <a class="button" href="{{ route('admin.projects.trashed') }}">Trash</a>
             </button>
 
             <div>
@@ -74,8 +79,8 @@
                     </thead>
                     <tbody class="border-b dark:bg-gray-900 dark:border-gray-700">
                         @foreach ($projects as $project)
-                            <tr>
-                                <td class="px-2 text-1xl font-medium dark:text-gray-400">
+                            <tr class="project-item">
+                                <td class="px-2 text-1xl font-medium dark:text-gray-400 project-name">
                                     <a 
                                         href="{{ route('admin.types.show', ['type' => $project->type]) }}"
                                     >
@@ -97,11 +102,18 @@
                                 <td class="px-2 py-2">
                                     <p>{{ $project->last_update }}</p>
                                 </td>
-                                <td class="px-2 py-2">
+                                <td class="px-2 py-2 whitespace-normal">
                                     <p>{{ $project->collaborators }}</p>
                                 </td>
                                 <td class="px-2 py-2">
-                                    <p><a href="/storage/{{$project->image}}">Preview</a></p>
+                                    <p>
+                                        <a 
+                                            href="/storage/{{$project->image}}"
+                                            class="hover:underline hover:text-blue-500 dark:hover:text-blue-300"
+                                        >
+                                            Preview
+                                        </a>
+                                    </p>
                                 </td>
                                 <td class="px-2 py-2">
                                     <p>{{ $project->description }}</p>
@@ -109,44 +121,50 @@
                                 <td class="px-2 py-2">
                                     <p>
                                         <a 
-                                        href="{{ route('admin.types.show', ['type' => $project->type]) }}"
+                                            href="{{ route('admin.types.show', ['type' => $project->type]) }}"
+                                            class="hover:underline hover:text-blue-500 dark:hover:text-blue-300"
                                         >
-                                        {{ $project->type->name }}
+                                            {{ $project->type->name }}
                                         </a>
                                     </p>
                                 </td>
                                 <td class="px-2 py-2">
                                     @foreach ($project->technologies as $technology)
-                                        <a href="{{route('admin.technologies.show', ['technology' => $technology])}}">{{$technology->name}}
-                                        </a>
-                                        {{ !$loop->last ? ',' : '' }}
+                                        <button class="border-2 border-lime-700 text-green-600 dark:text-green-400 hover:bg-gray-200 dark:hover:bg-green-700 hover:text-black dark:hover:text-white px-2 py-1 rounded">
+                                            <a href="{{ route('admin.technologies.show', ['technology' => $technology]) }}" class="text-decoration-none">{{ $technology->name }}</a>
+                                        </button>
+                                        <!-- {{ !$loop->last ? ',' : '' }} -->
                                     @endforeach
                                 </td>
                                 
-                                <td class="px-2 py-2">
-                                    <p><a class="text-decoration-none" href="{{ $project->link_github }}">Link</a></p>
+                                <td class="px-1 py-1">
+                                    <button class="border-2 text-blue-500 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-700 hover:text-white dark:hover:text-white px-4 py-1 rounded">
+                                        <a class="text-decoration-none" href="{{ $project->link_github }}">Link</a>
+                                    </button>
                                 </td>
-                                <td class=" flex px-3 py-2">
-                                    <button class="px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100">
-                                        <a class="button mx-1" href="{{ route('admin.projects.show', ['project' => $project]) }}">View</a>
-                                    </button>
-
-                                    <button class="ml-1 px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100">
-                                        <a class="button mx-1" href="{{ route('admin.projects.edit', ['project' => $project]) }}">Edit</a>
-                                    </button>
-
-                                    <form
-                                        action="{{ route('admin.projects.destroy', ['project' => $project->slug]) }}"
-                                        method="post"
-                                        class="d-inline-block mx-1"
-                                    >
-                                        @csrf
-                                        @method('delete')
-                                        <button class="px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100">
-                                            Delete
+                                <td class="px-1 py-2 ">
+                                    <div class="flex">
+                                        <button class="px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:bg-blue-500 hover:text-black">
+                                            <a class="button mx-1" href="{{ route('admin.projects.show', ['project' => $project]) }}">View</a>
                                         </button>
-                                    </form>
-                                    
+
+                                        <button class="ml-1 px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:bg-yellow-500 hover:text-black">
+                                            <a class="button mx-1" href="{{ route('admin.projects.edit', ['project' => $project]) }}">Edit</a>
+                                        </button>
+
+                                        <form
+                                            action="{{ route('admin.projects.destroy', ['project' => $project->slug]) }}"
+                                            method="post"
+                                            class="d-inline-block mx-1"
+                                        >
+                                            @csrf
+                                            @method('delete')
+                                            <button class="px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:bg-red-700 hover:text-white">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                   
                                 </td>
                             </tr>
                         @endforeach
