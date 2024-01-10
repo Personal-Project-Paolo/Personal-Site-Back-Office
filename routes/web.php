@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\PersonalController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
+use App\Http\Controllers\Admin\PreviewController;
 use App\Http\Controllers\Guests\PageController as GuestsPageController;
 
 /*
@@ -31,11 +32,17 @@ Route::middleware('auth', 'verified')
     ->prefix('admin')
     ->group(function () {
 
+
+    //Project route
     Route::get('/projects/trashed', [ProjectController::class, 'trashed'])->name('projects.trashed');
     Route::post('/projects/{project}/restore', [ProjectController::class, 'restore'])->name('projects.restore');
     Route::delete('/projects/{project}/harddelete', [ProjectController::class, 'harddelete'])->name('projects.harddelete');
 
     Route::resource('projects', ProjectController::class);
+    
+
+    //Preview route -> Project
+    Route::resource('preview', PreviewController::class)->only(['show']);
 
     // Route::resource('personal', PersonalController::class);
 

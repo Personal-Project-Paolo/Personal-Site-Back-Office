@@ -62,7 +62,6 @@
                     </colgroup>
                     <thead>
                         <tr class="dark:bg-gray-700">
-                            <th class="p-2">Type</th>
                             <th class="p-2">Title</th>
                             <th class="p-2">Id</th>
                             <th class="p-2">Author</th>
@@ -80,13 +79,6 @@
                     <tbody class="border-b dark:bg-gray-900 dark:border-gray-700">
                         @foreach ($projects as $project)
                             <tr class="project-item">
-                                <td class="px-2 text-1xl font-medium dark:text-gray-400 project-name">
-                                    <a 
-                                        href="{{ route('admin.types.show', ['type' => $project->type]) }}"
-                                    >
-                                        {{ $project->type->name }}
-                                    </a>
-                                </td>
                                 <td class="px-2 py-2">
                                     <p>{{ $project->title }}</p>
                                 </td>
@@ -107,12 +99,7 @@
                                 </td>
                                 <td class="px-2 py-2">
                                     <p>
-                                        <a 
-                                            href="/storage/{{$project->image}}"
-                                            class="hover:underline hover:text-blue-500 dark:hover:text-blue-300"
-                                        >
-                                            Preview
-                                        </a>
+                                        <a href="{{ route('admin.preview.show', ['preview' => $project->id]) }}" class="hover:text-blue-500 hover:underline">Preview</a>
                                     </p>
                                 </td>
                                 <td class="px-2 py-2">

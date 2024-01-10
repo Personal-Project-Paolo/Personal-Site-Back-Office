@@ -20,7 +20,6 @@
                     </colgroup>
                     <thead>
                         <tr class="dark:bg-gray-700">
-                            <th class="p-2">Type</th>
                             <th class="p-2">Title</th>
                             <th class="p-2">Id</th>
                             <th class="p-2">Author</th>
@@ -37,13 +36,6 @@
                     <tbody class="border-b dark:bg-gray-900 dark:border-gray-700">
                    
                         <tr>
-                            <td class="px-2 text-1xl font-medium dark:text-gray-400">
-                                <a 
-                                    href="{{ route('admin.types.show', ['type' => $project->type]) }}"
-                                >
-                                    {{ $project->type->name }}
-                                </a>
-                            </td>
                             <td class="px-2 py-2">
                                 <p>{{ $project->title }}</p>
                             </td>
@@ -67,10 +59,10 @@
                             </td>
                             <td class="px-2 py-2">
                                 <p>
-                                    <a 
-                                    href="{{ route('admin.types.show', ['type' => $project->type]) }}"
-                                    >
-                                    {{ $project->type->name }}
+                                    <a href="{{ route('admin.types.show', ['type' => $project->type]) }}">
+                                        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded">
+                                            {{ $project->type->name }}
+                                        </button>
                                     </a>
                                 </p>
                             </td>
@@ -108,10 +100,15 @@
                 </table>
             </div>
         </div>
-        <div class="container mb-5">
+        <div class="container mb-2">
             <img src="{{ Vite::asset('storage/app/public/' . $project->image ) }}" alt="">
         </div>
-
+        <div class="flex justify-center mb-2">
+            <button class="my-4 px-8 py-2 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:bg-blue-700 hover:text-white hover:scale-105 duration-200">
+                <a class="button mx-1" href="{{ route('admin.projects.index') }}">Return to list</a>
+            </button>
+        </div>
+        
     @endsection
    
     
