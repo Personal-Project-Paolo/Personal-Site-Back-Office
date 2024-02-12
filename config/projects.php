@@ -7,7 +7,7 @@ return [
         "creation_date" => "2023-02-10",
         "last_update" => "2023-02-11",
         "collaborators" => "No",
-        "image" => "uploads/myproject.png",
+        "image" => "img/planet.png",
         "description" => "The first project",
         "technologies" => [1],
         "type_id" => 1,

@@ -41,7 +41,7 @@
             <h1 class="text-8xl text-gray-700 dark:text-gray-500">WELCOME TO MY SITE</h1>
 
             <div class="">
-                <img src="{{ Vite::asset('storage/app/public/img/wolf.png') }}" alt="">
+                <img src="{{ Vite::asset('public/img/wolf.png') }}" alt="">
             </div>
 
             <h1 class="text-8xl text-gray-700 dark:text-gray-500">PERSONAL PROJECTS</h1>
