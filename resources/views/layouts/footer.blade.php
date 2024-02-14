@@ -7,7 +7,7 @@
                     <div class="mt-1 ml-4">
                         <img class="w-48" src="{{ Vite::asset('storage/app/public/img/wolf.png') }}" alt="">
                     </div>
-                    <span class="self-center text-2xl font-semibold">Site of Paul</span>
+                    <span class="self-center text-2xl font-semibold">Paul's Site</span>
                 </a>
             </div>
             <div class="col-span-6 text-center md:text-left md:col-span-3">

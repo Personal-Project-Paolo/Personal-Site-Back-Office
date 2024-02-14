@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+   
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
@@ -26,6 +22,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('image', 200)->nullable();
             $table->string('link_github', 150);
+            $table->string('link_netlify', 150)->nullable();
 
 
             //metterlo quando si crea il cestino

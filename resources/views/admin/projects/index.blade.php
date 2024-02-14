@@ -72,7 +72,8 @@
                             <th class="p-2">Description</th>
                             <th class="p-2">Type</th>
                             <th class="p-2">Technology</th>
-                            <th class="p-2">Link</th>
+                            <th class="p-2">Github</th>
+                            {{-- <th class="p-2">Netlify</th> --}}
                             <th class="p-2">Actions</th>
                         </tr>
                     </thead>
@@ -129,6 +130,11 @@
                                         <a class="text-decoration-none" href="{{ $project->link_github }}">Link</a>
                                     </button>
                                 </td>
+                                {{-- <td class="px-1 py-1">
+                                    <button class="border-2 text-blue-500 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-700 hover:text-white dark:hover:text-white px-4 py-1 rounded">
+                                        <a class="text-decoration-none" href="{{ $project->link_netlify }}">Link</a>
+                                    </button>
+                                </td> --}}
                                 <td class="px-1 py-2 ">
                                     <div class="flex">
                                         <button class="px-1 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:bg-blue-500 hover:text-black">
